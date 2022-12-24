@@ -1,6 +1,7 @@
 import React from "react"
 
 export const Statistics = ({ good, neutral, bad }) => {
+
     const countTotalFeedback = good + neutral + bad;
     const countPositiveFeedbackPercentage = Math.round(
         (good / countTotalFeedback) * 100
