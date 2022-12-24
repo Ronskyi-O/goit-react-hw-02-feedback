@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 export const FeedbackOptions = ({
     onIncrementGoodFeedback,
@@ -19,3 +20,9 @@ export const FeedbackOptions = ({
         </div>
     );
 };
+
+FeedbackOptions.protoTypes = {
+    onIncrementGoodFeedback: PropTypes.func.isRequired,
+    onIncrementNeutralFeedback: PropTypes.func.isRequired,
+    onIncrementBadFeedback: PropTypes.func.isRequired,
+}
