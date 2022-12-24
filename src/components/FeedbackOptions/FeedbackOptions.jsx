@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { Button, Wrapper } from './FeedbackOptions.Styled'
 
 export const FeedbackOptions = ({
     onIncrementGoodFeedback,
@@ -7,17 +8,17 @@ export const FeedbackOptions = ({
     onIncrementBadFeedback,
 }) => {
     return (
-        <div>
-            <button type="button" onClick={onIncrementGoodFeedback}>
+        <Wrapper>
+            <Button type="button" onClick={onIncrementGoodFeedback}>
                 Good
-            </button>
-            <button type="button" onClick={onIncrementNeutralFeedback}>
+            </Button>
+            <Button type="button" onClick={onIncrementNeutralFeedback}>
                 Neutral
-            </button>
-            <button type="button" onClick={onIncrementBadFeedback}>
+            </Button>
+            <Button type="button" onClick={onIncrementBadFeedback}>
                 Bad
-            </button>
-        </div>
+            </Button>
+        </Wrapper>
     );
 };
 
