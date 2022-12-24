@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Statistics } from '../Statistics/Statistics';
 import { Section } from '../Section/Section'
+import { Notification } from '../Notification/Notification'
 import { Container } from './App.styled';
 
 
@@ -30,13 +31,13 @@ export class App extends Component {
     }));
   };
 
-  // countTotalFeedback = () => {
-  //   return this.state.good + this.state.neutral + this.state.bad
-  // }
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad
+  }
 
-  // countPositiveFeedbackPercentage = () => {
-  //   return Math.round(this.state.good / this.countTotalFeedback() * 100);
-  // }
+  countPositiveFeedbackPercentage = () => {
+    return Math.round(this.state.good / this.countTotalFeedback() * 100);
+  }
 
   render() {
 
@@ -47,24 +48,28 @@ export class App extends Component {
     return (
       <Container>
         <div>
-          <Section title={`Please leave your feedback`}>
+          <Section title="Please leave your feedback">
             <FeedbackOptions
               onIncrementGoodFeedback={this.onClickIncrementGoodFeedback}
               onIncrementNeutralFeedback={this.onClickIncrementNeutralFeedback}
               onIncrementBadFeedback={this.onClickIncrementBadFeedback}
             />
           </Section>
-          <Section title={`Statistics`}>
-            <Statistics
+          <Section title="Statistics">
+            {this.countTotalFeedback() === 0 ? <Notification message="There is no feedback" /> : <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-            // total={this.countTotalFeedback()}
-            // positivePercentage={this.countPositiveFeedbackPercentage()}
-            />
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />}
+
           </Section>
         </div>
       </Container>
     );
   }
 }
+
+
+
